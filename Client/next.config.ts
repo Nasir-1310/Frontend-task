@@ -1,7 +1,6 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
   images: {
     remotePatterns: [
       {
@@ -15,6 +14,14 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: 'accountants-society-latest-news.s3.us-east-1.amazonaws.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com', // For Unsplash images
+      },
+      {
+        protocol: 'https',
+        hostname: 'i.pravatar.cc', // CRITICAL: For avatar images
       },
     ],
   },
