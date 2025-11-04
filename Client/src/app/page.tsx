@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+
 import Slider from "@/components/Slider";
 import Navbar from "@/components/Navbar";
 import ContinueWhereYouLeftOff from "@/components/ContinueWhereYouLeftOff";

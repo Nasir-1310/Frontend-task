@@ -5,18 +5,26 @@ import {
   LayoutGrid, 
   GraduationCap, 
   Volume2, 
-  Menu, 
+  List, 
   MessageCircle, 
-  Sliders, 
+  Menu, 
   Users, 
   Calendar,
-  Video,
-  Cloud,
-  Building2,
+  TrendingUp,
+  DollarSign,
+  BarChart3,
   Headphones,
   Settings
 } from 'lucide-react';
-import Container from './Container';
+
+type IconComponent = React.ComponentType<React.SVGProps<SVGSVGElement>>;
+
+interface MenuItem {
+  icon?: IconComponent;
+  label?: string;
+  gradient?: boolean;
+  type?: 'divider';
+}
 
 const DraggableSidebar = () => {
   const [position, setPosition] = useState({ x: 20, y: 20 });
@@ -24,23 +32,26 @@ const DraggableSidebar = () => {
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
   const sidebarRef = useRef<HTMLDivElement>(null);
 
-  const menuItems = [
-    { icon: LayoutGrid, label: 'Dashboard' },
-    { icon: GraduationCap, label: 'Education' },
-    { icon: Volume2, label: 'Audio' },
-    { icon: Menu, label: 'Menu' },
-    { icon: MessageCircle, label: 'Messages' },
-    { icon: Sliders, label: 'Controls' },
-    { icon: Users, label: 'Users' },
+  const menuItems: MenuItem[] = [
+    { icon: LayoutGrid, label: 'Dashboard', gradient: true },
+    { icon: GraduationCap, label: 'Program' },
+    { icon: Volume2, label: 'Leaderboard' },
+    { icon: List, label: 'My tasks' },
+    { icon: MessageCircle, label: 'Message' },
+    { icon: Menu, label: 'Over view' },
+    { icon: Users, label: 'Atleath' },
     { icon: Calendar, label: 'Calendar' },
-    { icon: Video, label: 'Video' },
-    { icon: Cloud, label: 'Cloud' },
-    { icon: Building2, label: 'Building' },
+    { type: 'divider' },
+    { icon: TrendingUp, label: 'My stats' },
+    { icon: DollarSign, label: 'Financials' },
+    { icon: BarChart3, label: 'Leaderboard' },
+    { type: 'divider' },
     { icon: Headphones, label: 'Support' },
+    { icon: Users, label: 'Financials' },
     { icon: Settings, label: 'Settings' },
   ];
 
-  const handleMouseDown = (e: React.MouseEvent) => {
+  const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
     if (sidebarRef.current) {
       const rect = sidebarRef.current.getBoundingClientRect();
       setDragOffset({
@@ -53,13 +64,12 @@ const DraggableSidebar = () => {
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      if (isDragging) {
+      if (isDragging && sidebarRef.current) {
         const newX = e.clientX - dragOffset.x;
         const newY = e.clientY - dragOffset.y;
         
-        // Boundary constraints
-        const maxX = window.innerWidth - (sidebarRef.current?.offsetWidth || 0);
-        const maxY = window.innerHeight - (sidebarRef.current?.offsetHeight || 0);
+        const maxX = window.innerWidth - sidebarRef.current.offsetWidth;
+        const maxY = window.innerHeight - sidebarRef.current.offsetHeight;
         
         setPosition({
           x: Math.max(0, Math.min(newX, maxX)),
@@ -84,50 +94,75 @@ const DraggableSidebar = () => {
   }, [isDragging, dragOffset]);
 
   return (
-    <Container>
-
-  
-    <>
-
-      <div
-        ref={sidebarRef}
-        className={`fixed z-50 ${isDragging ? 'cursor-grabbing' : 'cursor-grab'}`}
-        style={{
-          left: `${position.x}px`,
-          top: `${position.y}px`,
-          transition: isDragging ? 'none' : 'all 0.3s ease'
+    <div
+      ref={sidebarRef}
+      className={`fixed z-50 ${isDragging ? 'cursor-grabbing' : 'cursor-grab'}`}
+      style={{
+        left: `${position.x}px`,
+        top: `${position.y}px`,
+        transition: isDragging ? 'none' : 'all 0.3s ease'
+      }}
+      onMouseDown={handleMouseDown}
+    >
+      <div 
+        className="flex flex-col items-start p-0 gap-1 w-10 rounded-2xl shadow-2xl"
+        style={{ 
+          background: 'linear-gradient(180deg, #bcb9c9ff 0%, #a7b4c0ff 100%)',
         }}
-        onMouseDown={handleMouseDown}
       >
-        <div className="bg-green-500 rounded-2xl shadow-2xl p-0.5 backdrop-blur-sm bg-opacity-95">
-          <div className="flex flex-col gap-0.1">
-            {menuItems.map((item, index) => (
-              <button
-                key={index}
-                className="group relative w-12 h-12 flex items-center justify-center rounded-xl
-                         hover:bg-white hover:bg-opacity-20 transition-all duration-200
-                         active:scale-95"
-                title={item.label}
-                onClick={(e) => e.stopPropagation()}
-              >
-                <item.icon 
-                  className="w-5 h-5 text-white group-hover:scale-110 transition-transform duration-200" 
-                  strokeWidth={2}
-                />
-                
-                {/* Tooltip */}
-                <span className="absolute left-full ml-3 px-3 py-1.5 bg-gray-900 text-white text-sm
-                               rounded-lg opacity-0 group-hover:opacity-100 pointer-events-none
-                               transition-opacity duration-200 whitespace-nowrap z-10">
-                  {item.label}
-                </span>
-              </button>
-            ))}
-          </div>
-        </div>
+        {menuItems.map((item, index) => {
+          if (item.type === 'divider') {
+            return (
+              <div 
+                key={`divider-${index}`}
+                className="w-full h-px"
+                style={{ 
+                  background: 'rgba(20, 27, 52, 0.1)',
+                }}
+              />
+            );
+          }
+
+          if (!item.icon || !item.label) return null;
+
+          const Icon = item.icon;
+          const isGradient = item.gradient;
+
+          return (
+            <button
+              key={index}
+              className={`group relative flex flex-row items-center justify-center p-2.5 gap-1 w-10 h-10 rounded-xl transition-all duration-200 active:scale-95 ${
+                isGradient 
+                  ? 'shadow-md' 
+                  : 'hover:bg-gray-100'
+              }`}
+              style={
+                isGradient
+                  ? {
+                      background: 'linear-gradient(177.43deg, #5C8FF7 10.06%, #276AEE 62.94%)',
+                    }
+                  : {}
+              }
+              title={item.label}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <Icon 
+                className={`w-5 h-5 ${
+                  isGradient 
+                    ? 'text-white' 
+                    : 'text-[#141B34]'
+                } group-hover:scale-110 transition-transform duration-200`}
+                strokeWidth={1.5}
+              />
+              
+              <span className="absolute left-full ml-3 px-3 py-1.5 bg-gray-900 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-200 whitespace-nowrap z-10 shadow-lg">
+                {item.label}
+              </span>
+            </button>
+          );
+        })}
       </div>
-    </>
-      </Container>
+    </div>
   );
 };
 
