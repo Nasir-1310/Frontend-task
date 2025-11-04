@@ -1,6 +1,7 @@
 "use client";
 
 import { TrendingUp, Users, Target, Flame, Check } from 'lucide-react';
+import Container from './Container';
 
 export default function Slider() {
   const weekDays = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
@@ -8,7 +9,10 @@ export default function Slider() {
   const dates = ['', '', '', '', 23, 24, 25];
   
   return (
-    <div className="w-full max-w-7xl mx-auto p-4">
+    <Container>
+
+   
+    <div className="w-full bg-[#B2CCFF82] max-w-7xl mx-auto p-4">
       <div className="relative w-full rounded-2xl overflow-hidden shadow-xl bg-gradient-to-bl from-blue-200/40 via-white/60 to-teal-100/40">
         {/* Background Image and Overlay */}
         <div className="absolute inset-0">
@@ -175,5 +179,6 @@ export default function Slider() {
         </div>
       </div>
     </div>
+     </Container>
   );
 }

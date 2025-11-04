@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Slider from "@/components/Slider";
 import Navbar from "@/components/Navbar";
+import ContinueWhereYouLeftOff from "@/components/ContinueWhereYouLeftOff";
+
 
 export default function Home() {
   return (
@@ -13,6 +15,11 @@ export default function Home() {
       <section aria-label="Homepage Banner">
         <Slider />
       </section>
+      <section aria-label="Continue Where You Left Off Section">
+       
+        <ContinueWhereYouLeftOff />
+      </section>
+
 
 
 
