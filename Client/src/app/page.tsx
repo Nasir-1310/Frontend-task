@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Slider from "@/components/Slider";
 import Navbar from "@/components/Navbar";
 import ContinueWhereYouLeftOff from "@/components/ContinueWhereYouLeftOff";
+import TaskFeedbackSection from "@/components/TaskFeedbackSection";
 
 
 export default function Home() {
@@ -18,6 +19,9 @@ export default function Home() {
       <section aria-label="Continue Where You Left Off Section">
        
         <ContinueWhereYouLeftOff />
+      </section>
+      <section aria-label="Additional Sections">
+        <TaskFeedbackSection />
       </section>
 
 
