@@ -44,7 +44,7 @@ const AnnouncementsLeaderboard = () => {
         { name: 'COACH GORDAN', color: 'text-blue-600' },
         { name: 'COACH MCCULLUM', color: 'text-blue-600' }
       ],
-      image: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=800&h=400&fit=crop',
+      image: '/images/photo.png  ',
       stats: {
         likes: 20,
         replies: 34
@@ -60,7 +60,7 @@ const AnnouncementsLeaderboard = () => {
       description: 'Join us for our Friday morning casual bike ride around central park! We will meet you all @9AM EST',
       location: 'near Great Lawn Softball Field 7!',
       type: 'event',
-      image: 'https://images.unsplash.com/photo-1519583272095-6433daf26b6e?w=800&h=400&fit=crop'
+      image: '/images/map.png',
     }
   ];
 
@@ -109,7 +109,7 @@ const AnnouncementsLeaderboard = () => {
                       <p className="text-xs text-gray-500">{announcement.timestamp}</p>
                     </div>
                     <button className="text-gray-400 hover:text-gray-600">
-                     
+                      {/* <MoreVertical className="w-5 h-5" /> */}
                     </button>
                   </div>
 
@@ -169,8 +169,8 @@ const AnnouncementsLeaderboard = () => {
                       
                       {announcement.stats && (
                         <div className="flex items-center gap-4 ml-auto text-sm text-gray-600">
-                          <button className="flex items-center gap-1 hover:text-red-500 transition-colors">
-                            <Heart className="w-4 h-4" />
+                          <button className="flex items-center  gap-1 hover:text-red-500 transition-colors">
+                            <Heart className=" w-4 h-4 text-red-500 fill-red-500 " />
                             {announcement.stats.likes} Likes
                           </button>
                           <button className="flex items-center gap-1 hover:text-blue-500 transition-colors">
@@ -268,11 +268,11 @@ const AnnouncementsLeaderboard = () => {
             </div>
 
             {/* Rest of Leaderboard */}
-            <div className="bg-white rounded-xl p-4 space-y-3">
+            <div className="bg-blue-50 rounded-xl p-4 space-y-3">
               {leaderboardEntries.slice(3).map((entry) => (
                 <div
                   key={entry.rank}
-                  className="flex items-center gap-4 p-3 rounded-lg hover:bg-gray-50 transition-colors"
+                  className="flex bg-white items-center gap-4 p-3 rounded-lg hover:bg-gray-50 transition-colors"
                 >
                   <div className="flex items-center gap-3 flex-1">
                     <span className="text-lg font-bold text-gray-500 w-8">#{entry.rank}</span>
