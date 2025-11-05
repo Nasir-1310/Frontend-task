@@ -17,7 +17,7 @@ export default function Slider() {
 
   return (
     <Container>
-      <div className="w-full mx-auto">
+      <div className="w-full bg-[#DDEBF7] mx-auto">
         <div className="relative w-full max-w-[1280px]h-[427px] lg:h-[427px] md:h-[700px] sm:h-[850px] rounded-3xl overflow-hidden shadow-xl mx-auto">
           {/* Background Image */}
           <div className="absolute inset-0">

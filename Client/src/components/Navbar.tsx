@@ -1,105 +1,235 @@
-// components/Navbar.tsx
-"use client";
 'use client';
 
-import { Search, Bell, MessageSquare } from 'lucide-react';
-import { useState } from 'react';
-import Container from './Container';
+import { Users, TrendingUp, BarChart3, Check } from 'lucide-react';
 import Image from 'next/image';
+import Container from './Container';
 
-export default function Navbar() {
-  const [notificationCount] = useState(3);
-  const userName = "Mark";
+export default function Slider() {
+  const weekDays = [
+    { label: 'M', completed: true },
+    { label: 'T', completed: true },
+    { label: 'W', completed: true },
+    { label: 'T', completed: true },
+    { label: 'F', completed: false, value: 23 },
+    { label: 'S', completed: false, value: 24 },
+    { label: 'S', completed: false, value: 25 },
+  ];
 
   return (
     <Container>
-
-
-      <nav className="bg-gradient-to-r from-blue-50 to-indigo-50 border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            {/* Left Section - Logo and Welcome */}
-            <div className="flex items-center space-x-4">
-
-
-              {/* Logo */}
-              <div className="flex-shrink-0">
-                <div className="w-10 h-10 bg-gradient-to-r  flex items-center justify-center   transition-shadow">
-                  <Image
-                    src="/images/logo2.png"
-                    alt="Logo"
-                    width={28}
-                    height={28}
-                    className="object-contain"
-                  />
-                </div>
-              </div>
-
-              {/* Welcome Text */}
-              <div className="hidden sm:block">
-                <h1 className="text-lg font-semibold text-gray-800">
-                  Welcome Back, {userName}
-                </h1>
-                <p className="text-sm text-gray-500">
-                  <span className="text-gray-400">Overview/</span>{' '}
-                  <span className="text-gray-700 font-medium">Athlete Program Dashboard</span>
-                </p>
-              </div>
-            </div>
-
-            {/* Right Section - Search, Icons, Profile */}
-            <div className="flex items-center space-x-3 sm:space-x-4">
-              {/* Search Bar */}
-              <div className="hidden md:flex items-center bg-white rounded-lg px-4 py-2 w-64 shadow-sm border border-gray-200 focus-within:ring-2 focus-within:ring-blue-500 focus-within:border-transparent transition-all">
-                <Search className="w-4 h-4 text-gray-400 mr-2" />
-                <input
-                  type="text"
-                  placeholder="Search"
-                  className="flex-1 outline-none text-sm text-gray-700 placeholder-gray-400 bg-transparent"
-                />
-              </div>
-
-              {/* Mobile Search Icon */}
-              <button className="md:hidden p-2 hover:bg-white rounded-lg transition-colors">
-                <Search className="w-5 h-5 text-gray-600" />
-              </button>
-
-              {/* Message Icon */}
-              <button className="p-2 hover:bg-white rounded-lg transition-colors relative">
-                <MessageSquare className="w-5 h-5 text-gray-600" />
-              </button>
-
-              {/* Notification Bell */}
-              <button className="p-2 hover:bg-white rounded-lg transition-colors relative">
-                <Bell className="w-5 h-5 text-gray-600" />
-                {notificationCount > 0 && (
-                  <span className="absolute top-1 right-1 w-3 h-3 bg-red-500 text-white text-xs font-semibold rounded-full flex items-center justify-center shadow-md">
-                    {notificationCount}
-                  </span>
-                )}
-              </button>
-
-              {/* User Avatar */}
-              <button className="flex-shrink-0 hover:opacity-80 transition-opacity">
-                <div className="w-9 h-9 rounded-full bg-gradient-to-br from-blue-600 to-indigo-600 flex items-center justify-center text-white font-semibold text-sm shadow-md ring-2 ring-white">
-                  {userName.charAt(0)}
-                </div>
-              </button>
-            </div>
+      <div className="w-full mx-auto">
+        <div className="relative w-full max-w-[1280px] h-[427px] lg:h-[427px] md:h-[600px] sm:h-[700px] rounded-3xl overflow-hidden shadow-xl mx-auto">
+          {/* Background Image */}
+          <div className="absolute inset-0">
+            <Image
+              src="/images/slide.png"
+              alt="QB Fundamentals"
+              fill
+              className="object-cover object-right"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-white from-20% via-white/30 via-35% to-transparent to-50%" />
           </div>
 
-          {/* Mobile Welcome Text */}
-          <div className="sm:hidden pb-3">
-            <h1 className="text-base font-semibold text-gray-800">
-              Welcome Back, {userName}
+          {/* Content */}
+          <div className="relative z-10 h-full flex flex-col justify-between px-4 sm:px-6 lg:px-8 py-6 lg:py-8">
+            {/* Title */}
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white">
+              The QB Fundamentals
             </h1>
-            <p className="text-xs text-gray-500 mt-0.5">
-              <span className="text-gray-400">Overview/</span>{' '}
-              <span className="text-gray-700 font-medium">Athlete Program Dashboard</span>
-            </p>
+
+            {/* Stats Cards Row */}
+            <div className="flex flex-wrap lg:flex-nowrap gap-2 lg:gap-1 items-end">
+              {/* Total Athletes Card */}
+              <div className="bg-white rounded-2xl shadow-lg p-3 lg:p-4 flex items-center gap-2 lg:gap-3 w-full sm:w-[calc(50%-0.25rem)] lg:w-[164px] h-[78px]">
+                <div className="w-8 h-8 lg:w-9 lg:h-9 rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0">
+                  <Users className="w-3.5 h-3.5 lg:w-4 lg:h-4 text-gray-700" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="text-[9px] lg:text-[10px] text-gray-600 font-medium mb-0.5 whitespace-nowrap">Total Athletes</div>
+                  <div className="flex items-center gap-1 lg:gap-1.5">
+                    <span className="text-lg lg:text-xl font-bold text-gray-900">65</span>
+                    <div className="flex items-center gap-0.5 text-green-600">
+                      <span className="text-[9px] lg:text-[10px] font-semibold">+12</span>
+                      <TrendingUp className="w-2 h-2 lg:w-2.5 lg:h-2.5" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Projected Ranking Card */}
+              <div className="bg-white rounded-2xl shadow-lg p-3 lg:p-4 flex items-center gap-2 lg:gap-3 w-full sm:w-[calc(50%-0.25rem)] lg:w-[197px] h-[78px]">
+                <div className="w-8 h-8 lg:w-9 lg:h-9 rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0">
+                  <BarChart3 className="w-3.5 h-3.5 lg:w-4 lg:h-4 text-gray-700" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="text-[9px] lg:text-[10px] text-gray-600 font-medium mb-0.5 whitespace-nowrap">Projected Ranking</div>
+                  <span className="text-lg lg:text-xl font-bold text-gray-900">#5</span>
+                </div>
+              </div>
+
+              {/* Consistency Score Card */}
+              <div className="bg-white rounded-2xl shadow-lg p-3 lg:p-4 flex items-center justify-between w-full sm:w-[calc(50%-0.25rem)] lg:w-[263px] h-[78px]">
+                <div>
+                  <div className="text-[9px] lg:text-[10px] text-gray-900 font-semibold mb-0.5 whitespace-nowrap">Consistency Score</div>
+                  <div className="text-[8px] lg:text-[9px] text-gray-500">last 30 days</div>
+                </div>
+                <div className="relative w-11 h-11 lg:w-12 lg:h-12 flex-shrink-0">
+                  <svg className="w-11 h-11 lg:w-12 lg:h-12 transform -rotate-90">
+                    <circle
+                      cx="22"
+                      cy="22"
+                      r="18"
+                      stroke="#E5E7EB"
+                      strokeWidth="4"
+                      fill="none"
+                      className="lg:hidden"
+                    />
+                    <circle
+                      cx="24"
+                      cy="24"
+                      r="20"
+                      stroke="#E5E7EB"
+                      strokeWidth="4"
+                      fill="none"
+                      className="hidden lg:block"
+                    />
+                    <circle
+                      cx="22"
+                      cy="22"
+                      r="18"
+                      stroke="#3B82F6"
+                      strokeWidth="4"
+                      fill="none"
+                      strokeDasharray={`${2 * Math.PI * 18}`}
+                      strokeDashoffset={`${2 * Math.PI * 18 * (1 - 0.65)}`}
+                      strokeLinecap="round"
+                      className="lg:hidden"
+                    />
+                    <circle
+                      cx="24"
+                      cy="24"
+                      r="20"
+                      stroke="#3B82F6"
+                      strokeWidth="4"
+                      fill="none"
+                      strokeDasharray={`${2 * Math.PI * 20}`}
+                      strokeDashoffset={`${2 * Math.PI * 20 * (1 - 0.65)}`}
+                      strokeLinecap="round"
+                      className="hidden lg:block"
+                    />
+                  </svg>
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <span className="text-[11px] lg:text-xs font-bold text-gray-900">65%</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Weekly Progress Card */}
+              <div className="bg-white rounded-2xl shadow-lg p-3 lg:p-4 flex items-center justify-between w-full sm:w-[calc(50%-0.25rem)] lg:w-[263px] h-[78px]">
+                <div>
+                  <div className="text-[9px] lg:text-[10px] text-gray-900 font-semibold mb-0.5 whitespace-nowrap">Weekly Progress</div>
+                </div>
+                <div className="relative w-11 h-11 lg:w-12 lg:h-12 flex-shrink-0">
+                  <svg className="w-11 h-11 lg:w-12 lg:h-12 transform -rotate-90">
+                    <circle
+                      cx="22"
+                      cy="22"
+                      r="18"
+                      stroke="#E5E7EB"
+                      strokeWidth="4"
+                      fill="none"
+                      className="lg:hidden"
+                    />
+                    <circle
+                      cx="24"
+                      cy="24"
+                      r="20"
+                      stroke="#E5E7EB"
+                      strokeWidth="4"
+                      fill="none"
+                      className="hidden lg:block"
+                    />
+                    <circle
+                      cx="22"
+                      cy="22"
+                      r="18"
+                      stroke="#10B981"
+                      strokeWidth="4"
+                      fill="none"
+                      strokeDasharray={`${2 * Math.PI * 18}`}
+                      strokeDashoffset={`${2 * Math.PI * 18 * (1 - 0.35)}`}
+                      strokeLinecap="round"
+                      className="lg:hidden"
+                    />
+                    <circle
+                      cx="24"
+                      cy="24"
+                      r="20"
+                      stroke="#10B981"
+                      strokeWidth="4"
+                      fill="none"
+                      strokeDasharray={`${2 * Math.PI * 20}`}
+                      strokeDashoffset={`${2 * Math.PI * 20 * (1 - 0.35)}`}
+                      strokeLinecap="round"
+                      className="hidden lg:block"
+                    />
+                  </svg>
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <span className="text-[11px] lg:text-xs font-bold text-gray-900">35%</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Streak Card */}
+              <div className="bg-white/90 lg:ml-1 rounded-2xl shadow-lg p-4 w-full lg:w-[317px] h-[180px] flex flex-col justify-between">
+                {/* Header with Badges */}
+                <div className="flex items-center justify-between">
+                  <div className="px-2.5 py-1 rounded-full">
+                    <span className="text-[9px] lg:text-[10px] font-semibold text-gray-700">Active Streak</span>
+                  </div>
+                  <div className='flex'>
+                    <div className="bg-gradient-to-r from-orange-500 to-orange-600 px-2 lg:px-2.5 py-2 lg:py-2.5 rounded-full flex items-center shadow-md">
+                      <span className="text-[11px] lg:text-[12px] font-semibold text-white">Hot Streak</span>
+                    </div>
+                    <div className="bg-white/95 px-1.5 lg:px-2 py-1 rounded-full flex items-center shadow-md">
+                      <span className="text-lg lg:text-xl">🔥</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Days Count */}
+                <div>
+                  <div className="text-xl lg:text-2xl font-bold text-gray-900">12 Days</div>
+                  <div className="text-[8px] lg:text-[9px] text-gray-500">Next milestone: 15 days</div>
+                </div>
+
+                {/* Week Days Grid */}
+                <div className="flex justify-between gap-1">
+                  {weekDays.map((day, idx) => (
+                    <div key={idx} className="flex flex-col items-center gap-1">
+                      <span className="text-[8px] lg:text-[9px] font-medium text-gray-600">{day.label}</span>
+                      <div
+                        className={`w-6 h-6 lg:w-7 lg:h-7 rounded-full flex items-center justify-center ${
+                          day.completed
+                            ? 'bg-blue-500 shadow-sm'
+                            : 'bg-gray-100'
+                        }`}
+                      >
+                        {day.completed ? (
+                          <Check className="w-3 h-3 lg:w-3.5 lg:h-3.5 text-white stroke-[3]" />
+                        ) : (
+                          <span className="text-[8px] lg:text-[9px] font-medium text-gray-500">{day.value}</span>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </nav>
+      </div>
     </Container>
   );
 }
