@@ -77,9 +77,11 @@ export default function Navbar() {
               {/* User Avatar */}
               <button className="flex-shrink-0 hover:opacity-80 transition-opacity">
                 <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br from-[#D128F2] via-[#12B3F9] to-[#223ACE] flex items-center justify-center shadow-md p-[2px]">
-                  <img
+                  <Image
                     src="/images/avator.png"
                     alt={userName}
+                    width={40}
+                    height={40}
                     className="w-full h-full rounded-full object-cover"
                   />
                 </div>
