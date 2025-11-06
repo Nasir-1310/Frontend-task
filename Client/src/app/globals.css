@@ -20,21 +20,21 @@
 /* 768px to 1023px — 24px to 32px margin */
 @media (min-width: 768px) {
   :root {
-    --fluid-margin: calc(24px + (8 * ((100vw - 768px) / 256)));
+    --fluid-margin: calc(6px + (2 * ((100vw - 768px) / 256)));
   }
 }
 
 /* 1024px to 1439px — 32px to 60px margin */
 @media (min-width: 1024px) {
   :root {
-    --fluid-margin: calc(32px + (28 * ((100vw - 1024px) / 416)));
+    --fluid-margin: calc(6px + (2 * ((100vw - 1024px) / 416)));
   }
 }
 
 /* 1440px to 2559px — 60px to 620px margin */
 @media (min-width: 1440px) {
   :root {
-    --fluid-margin: calc(60px + (560 * ((100vw - 1440px) / 1120)));
+   --fluid-margin: calc(40px + (300 * ((100vw - 1440px) / 1120)));
   }
 }
 
