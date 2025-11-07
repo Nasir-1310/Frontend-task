@@ -4,7 +4,7 @@ import Navbar from "@/components/Navbar";
 import ContinueWhereYouLeftOff from "@/components/ContinueWhereYouLeftOff";
 import TaskFeedbackSection from "@/components/TaskFeedbackSection";
 import AnnouncementsLeaderboard from "@/components/AnnouncementsLeaderboard";
-// import DraggableSidebar from "@/components/DraggableSidebar";
+import DraggableSidebar from "@/components/DraggableSidebar";
 
 
 export default function Home() {
@@ -15,7 +15,7 @@ export default function Home() {
         <Navbar/>
       </section>
       <section aria-label="Sidebar Menu Section">
-      {/* <DraggableSidebar/> */}
+      <DraggableSidebar/>
       </section>
       <section aria-label="Homepage Banner">
         <Slider />
