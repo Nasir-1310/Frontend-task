@@ -278,6 +278,8 @@ const TaskFeedbackSection = () => {
                     <Image
                       src={feedback.avatar}
                       alt={feedback.coach}
+                      height={40}
+                      width={40}
                       className="w-8 h-8 sm:w-10 sm:h-10 rounded-full object-cover ring-2 ring-blue-100 flex-shrink-0"
                     />
                     <div className="flex-1 min-w-0">
