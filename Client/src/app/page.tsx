@@ -4,18 +4,18 @@ import Navbar from "@/components/Navbar";
 import ContinueWhereYouLeftOff from "@/components/ContinueWhereYouLeftOff";
 import TaskFeedbackSection from "@/components/TaskFeedbackSection";
 import AnnouncementsLeaderboard from "@/components/AnnouncementsLeaderboard";
-import DraggableSidebar from "@/components/DraggableSidebar";
+// import DraggableSidebar from "@/components/DraggableSidebar";
 
 
 export default function Home() {
   return (
-    <main className="bg-white text-gray-900">
+    <main>
 
       <section aria-label="Navbar Section">
         <Navbar/>
       </section>
       <section aria-label="Sidebar Menu Section">
-      <DraggableSidebar/>
+      {/* <DraggableSidebar/> */}
       </section>
       <section aria-label="Homepage Banner">
         <Slider />
