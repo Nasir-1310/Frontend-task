@@ -1,4 +1,4 @@
-
+// src/app/page.tsx
 import Slider from "@/components/Slider";
 import Navbar from "@/components/Navbar";
 import ContinueWhereYouLeftOff from "@/components/ContinueWhereYouLeftOff";
