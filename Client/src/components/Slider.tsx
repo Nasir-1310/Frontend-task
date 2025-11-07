@@ -19,7 +19,7 @@ export default function Slider() {
     <Container>
       <div className="w-full bg-[#DDEBF7] mx-auto px-6 sm:px-8 lg:px-10">
 
-        <div className="relative w-full max-w-[1280px] h-[427px] lg:h-[427px] md:h-[700px] sm:h-[850px] rounded-3xl overflow-hidden shadow-xlml-4 mr-auto ">
+        <div className="relative w-auto h-[700px] sm:h-[650px] md:h-[600px] lg:h-[450px] rounded-3xl overflow-hidden shadow-xl ml-4 mr-auto ml-7 md:ml-10 lg:ml-18">
           {/* Background Image */}
           <div className="absolute inset-0">
             <Image

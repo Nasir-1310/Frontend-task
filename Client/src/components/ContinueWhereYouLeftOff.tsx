@@ -41,9 +41,12 @@ export default function ContinueWhereYouLeftOff() {
 
   return (
     <Container>
-      <div className="p-2 sm:p-3 lg:p-4 bg-[#B2CCFF82] grid grid-cols-1 xl:grid-cols-[1fr_400px] gap-3 sm:gap-4 xl:gap-6">
+      <div className=' bg-[#B2CCFF82] '>
+
+     
+      <div className=" w-auto p-1 ml-4 mr-auto ml-7 md:ml-10 lg:ml-18 px-3 sm:px-6 lg:px-10 pt-1 sm:pt-3 lg:pt-5 grid grid-cols-1 xl:grid-cols-[1fr_400px] gap-3 sm:gap-4 xl:gap-6">
         {/* LEFT SIDE */}
-        <div className="w-full p-3 sm:p-4 lg:p-5 rounded-2xl border-t-2 border-l-2 border-r-2 border-white/30 bg-gradient-to-b from-blue-50/50 to-blue-50/20">
+        <div className=" sm:p-1.5 lg:p-5 rounded-2xl border-t-2 border-l-2 border-r-2 border-white/30 bg-gradient-to-b from-blue-50/50 to-blue-50/20">
           {/* Header */}
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 sm:gap-3 mb-3 sm:mb-4 lg:mb-5">
             <h2 className="text-base sm:text-lg lg:text-xl xl:text-2xl font-bold text-gray-900">
@@ -53,7 +56,7 @@ export default function ContinueWhereYouLeftOff() {
           </div>
 
           {/* Responsive Card Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-1 sm:gap-2 lg:gap-3">
             {leftItems.map((item) => (
               <div
                 key={item.id}
@@ -101,11 +104,11 @@ export default function ContinueWhereYouLeftOff() {
                   <div className="flex items-center justify-between text-[10px] sm:text-xs">
                     <div className="flex items-center gap-1">
                       <div className={`w-1.5 h-1.5 rounded-full ${item.progress > 0 ? 'bg-blue-600' : 'bg-orange-500'}`} />
-                      <span className="text-gray-700 font-medium">{item.progress}% Complete</span>
+                      <span className="text-gray-700 text-[12px]">{item.progress}% Complete</span>
                     </div>
                     <div className="flex items-center gap-1 text-gray-600">
                       <Calendar className="w-3 h-3" />
-                      <span className="font-medium">{item.dueDate}</span>
+                      <span className="text-[12px]">{item.dueDate}</span>
                     </div>
                   </div>
                 </div>
@@ -179,6 +182,7 @@ export default function ContinueWhereYouLeftOff() {
           </div>
         </div>
       </div>
+       </div>
     </Container>
   );
 }

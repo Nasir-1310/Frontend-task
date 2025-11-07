@@ -4,6 +4,7 @@ import React from 'react';
 import { Calendar, Clock, CheckCircle2, Upload, Bell } from 'lucide-react';
 import GradientButton from './GradientButton';
 import Image from 'next/image';
+import Container from './Container';
 
 interface Task {
   id: string;
@@ -106,7 +107,7 @@ const TaskFeedbackSection = () => {
           return (
             <svg
               key={star}
-              className="w-3 h-3 sm:w-4 sm:h-4"
+              className="w-2.5 h-2.5 sm:w-3 sm:h-3 md:w-3.5 md:h-3.5"
               viewBox="0 0 20 20"
             >
               <defs>
@@ -129,175 +130,178 @@ const TaskFeedbackSection = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#B2CCFF82] from-blue-50 via-white to-cyan-50 p-2 sm:p-4 md:p-6 lg:p-8">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-3 sm:gap-4">
-        {/* Today's Tasks Section */}
-        <div className="bg-blue-50 rounded-xl lg:col-span-2">
-          <div className="rounded-2xl p-3 sm:p-4 md:p-5">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-3 sm:mb-4 gap-2 sm:gap-3">
-              <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900">Todays tasks</h2>
-              <GradientButton className="whitespace-nowrap px-4 py-2 w-auto inline-block">
-                View Entire Schedule
-              </GradientButton>
-            </div>
+    <Container>
+      <div className="bg-[#B2CCFF82] from-blue-50 via-white to-cyan-50 px-3 sm:px-6 lg:px-10 pt-0 sm:pt-1 lg:pt-2">
+        <div className="mx-auto grid grid-cols-1 lg:grid-cols-3 gap-3 sm:gap-4 w-auto ml-4 mr-4 sm:ml-7 sm:mr-auto md:ml-10 lg:ml-18">
+          {/* Today's Tasks Section */}
+          <div className="bg-blue-50 rounded-xl lg:col-span-2">
+            <div className="rounded-2xl p-2.5 sm:p-3 md:p-4 lg:p-5">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-2.5 sm:mb-3 md:mb-4 gap-2">
+                <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-gray-900">Todays tasks</h2>
+                <GradientButton className="whitespace-nowrap px-3 sm:px-4 py-1.5 sm:py-2 w-auto inline-block text-xs sm:text-sm">
+                  View Entire Schedule
+                </GradientButton>
+              </div>
 
-            {/* Week Calendar */}
-            <div className="grid grid-cols-7 gap-1 sm:gap-1.5 mb-4 sm:mb-6">
-              {weekDays.map((item, index) => (
-                <div
-                  key={index}
-                  className={`text-center p-1 sm:p-2 md:p-2.5 rounded-lg transition-all ${index === 2
-                      ? 'bg-white text-black shadow-md'
-                      : 'bg-gray-50 text-gray-700 hover:bg-gray-100'
+              {/* Week Calendar */}
+              <div className="grid grid-cols-7 gap-0.5 sm:gap-1 md:gap-1.5 mb-3 sm:mb-4 md:mb-5">
+                {weekDays.map((item, index) => (
+                  <div
+                    key={index}
+                    className={`text-center p-1 sm:p-1.5 md:p-2 rounded-md sm:rounded-lg transition-all ${
+                      index === 2
+                        ? 'bg-white text-black shadow-md'
+                        : 'bg-gray-50 text-gray-700 hover:bg-gray-100'
                     }`}
-                >
-                  <div className="font-semibold text-[10px] sm:text-xs md:text-sm mb-0.5 relative">
-                    {item.day}
-                    {item.hasIndicator && (
-                      <span className="absolute -top-0.5 sm:-top-1 -right-0.5 sm:-right-1 w-1.5 h-1.5 sm:w-2 sm:h-2 bg-orange-400 rounded-full"></span>
-                    )}
+                  >
+                    <div className="font-semibold text-[9px] sm:text-[10px] md:text-xs mb-0.5 relative">
+                      {item.day}
+                      {item.hasIndicator && (
+                        <span className="absolute -top-0.5 -right-0.5 sm:-top-1 sm:-right-1 w-1 h-1 sm:w-1.5 sm:h-1.5 bg-orange-400 rounded-full"></span>
+                      )}
+                    </div>
+                    <div className={`text-[8px] sm:text-[9px] md:text-[10px] ${index === 2 ? 'text-black' : 'text-gray-500'}`}>
+                      {item.date}
+                    </div>
                   </div>
-                  <div className={`text-[9px] sm:text-[10px] md:text-xs ${index === 2 ? 'text-black' : 'text-gray-500'}`}>
-                    {item.date}
-                  </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
 
-            {/* Tasks List */}
-            <div className="space-y-1 sm:space-y-1.5">
-              {tasks.map((task) => (
-                <div
-                  key={task.id}
-                  className={`flex flex-col sm:flex-row sm:items-center justify-between p-2 sm:p-2 rounded-lg sm:rounded-xl border border-gray-100 hover:border-gray-200 hover:shadow-sm transition-all gap-2 sm:gap-1.5 ${
-                    task.tags?.includes('Video Submission Required') 
-                      ? 'bg-white/50' 
-                      : 'bg-transparent'
-                  }`}
-                >
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-start gap-2">
-                      <div className="flex-1 min-w-0">
-                        <div className="flex flex-wrap items-center gap-1.5 mb-1.5">
-                          <h3 className="font-semibold text-sm sm:text-base text-gray-900">{task.title}</h3>
-                          {task.tags?.map((tag, idx) => (
-                            <span
-                              key={idx}
-                              className="bg-[#D8D8D8] text-gray-600 text-[10px] sm:text-xs px-1.5 sm:px-2 py-0.5 rounded-3xl"
-                            >
-                              {tag}
-                            </span>
-                          ))}
-                          {task.isLive && (
-                            <span className="flex items-center gap-1 bg-red-50 text-red-600 text-[10px] sm:text-xs px-1.5 sm:px-2 py-0.5 rounded">
-                              <span className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-red-600 rounded-sm"></span>
-                              Live
-                            </span>
-                          )}
-                        </div>
-                        <div className="flex items-center gap-1.5 text-xs sm:text-sm text-gray-600">
-                          <span className={`w-2 h-2 sm:w-2 sm:h-2 ${task.isLive ? 'bg-[#CC7B1F]' : 'bg-blue-600'} rounded-sm flex-shrink-0`}></span>
-                          <span className="truncate">{task.team}</span>
+              {/* Tasks List */}
+              <div className="space-y-1 sm:space-y-1.5">
+                {tasks.map((task) => (
+                  <div
+                    key={task.id}
+                    className={`flex flex-col sm:flex-row sm:items-center justify-between p-2 sm:p-2.5 md:p-3 rounded-lg sm:rounded-xl border border-gray-100 hover:border-gray-200 hover:shadow-sm transition-all gap-2 sm:gap-2 ${
+                      task.tags?.includes('Video Submission Required') 
+                        ? 'bg-white/50' 
+                        : 'bg-transparent'
+                    }`}
+                  >
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-start gap-2">
+                        <div className="flex-1 min-w-0">
+                          <div className="flex flex-wrap items-center gap-1 sm:gap-1.5 mb-1 sm:mb-1.5">
+                            <h3 className="font-semibold text-xs sm:text-sm md:text-base text-gray-900">{task.title}</h3>
+                            {task.tags?.map((tag, idx) => (
+                              <span
+                                key={idx}
+                                className="bg-[#D8D8D8] text-gray-600 text-[9px] sm:text-[10px] md:text-xs px-1.5 sm:px-2 py-0.5 rounded-3xl"
+                              >
+                                {tag}
+                              </span>
+                            ))}
+                            {task.isLive && (
+                              <span className="flex items-center gap-0.5 sm:gap-1 bg-red-50 text-red-600 text-[9px] sm:text-[10px] md:text-xs px-1.5 sm:px-2 py-0.5 rounded">
+                                <span className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-red-600 rounded-sm"></span>
+                                Live
+                              </span>
+                            )}
+                          </div>
+                          <div className="flex items-center gap-1 sm:gap-1.5 text-[10px] sm:text-xs md:text-sm text-gray-600">
+                            <span className={`w-1.5 h-1.5 sm:w-2 sm:h-2 ${task.isLive ? 'bg-[#CC7B1F]' : 'bg-blue-600'} rounded-sm flex-shrink-0`}></span>
+                            <span className="truncate">{task.team}</span>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
 
-                  <div className="flex items-center gap-2 flex-wrap sm:flex-nowrap">
-                    {task.status === 'complete' ? (
-                      <>
-                        <div className="flex items-center gap-1.5 text-green-600 text-xs sm:text-sm font-medium">
-                          <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#18952D] fill-[#18952D]/30" />
-                          Complete
-                        </div>
-                        <GradientButton disabled>
-                          Done
-                        </GradientButton>
-                      </>
-                    ) : (
-                      <>
-                        {task.dueDate && (
-                          <div className="flex items-center gap-1.5 text-gray-600 text-xs sm:text-sm">
-                            <Calendar className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-                            <span className="whitespace-nowrap">{task.dueDate}</span>
+                    <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap sm:flex-nowrap">
+                      {task.status === 'complete' ? (
+                        <>
+                          <div className="flex items-center gap-1 sm:gap-1.5 text-green-600 text-[10px] sm:text-xs md:text-sm font-medium">
+                            <CheckCircle2 className="w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4 text-[#18952D] fill-[#18952D]/30" />
+                            Complete
                           </div>
-                        )}
-                        {task.time && (
-                          <div className="flex items-center gap-1.5 text-gray-600 text-xs sm:text-sm">
-                            <Clock className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-                            <span className="whitespace-nowrap">{task.time}</span>
-                          </div>
-                        )}
-                        {task.daysLeft && (
-                          <div className="flex items-center gap-1.5 text-gray-600 text-xs sm:text-sm">
-                            <Calendar className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-                            <span className="whitespace-nowrap">{task.daysLeft} days left</span>
-                          </div>
-                        )}
-                        <GradientButton className="flex items-center gap-1.5 px-3 py-1.5 text-xs sm:text-sm white">
-                          {task.dueDate ? (
-                            <>
-                              <Upload className="w-3.5 h-3.5" />
-                              <span>Upload</span>
-                            </>
-                          ) : task.time ? (
-                            <>
-                              <Bell className="w-3.5 h-3.5" />
-                              <span>Remind Me</span>
-                            </>
-                          ) : (
-                            <span>Start</span>
+                          <GradientButton disabled className="text-[10px] sm:text-xs md:text-sm px-2.5 sm:px-3 py-1 sm:py-1.5">
+                            Done
+                          </GradientButton>
+                        </>
+                      ) : (
+                        <>
+                          {task.dueDate && (
+                            <div className="flex items-center gap-1 sm:gap-1.5 text-gray-600 text-[10px] sm:text-xs md:text-sm">
+                              <Calendar className="w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4" />
+                              <span className="whitespace-nowrap">{task.dueDate}</span>
+                            </div>
                           )}
-                        </GradientButton>
-                      </>
-                    )}
+                          {task.time && (
+                            <div className="flex items-center gap-1 sm:gap-1.5 text-gray-600 text-[10px] sm:text-xs md:text-sm">
+                              <Clock className="w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4" />
+                              <span className="whitespace-nowrap">{task.time}</span>
+                            </div>
+                          )}
+                          {task.daysLeft && (
+                            <div className="flex items-center gap-1 sm:gap-1.5 text-gray-600 text-[10px] sm:text-xs md:text-sm">
+                              <Calendar className="w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4" />
+                              <span className="whitespace-nowrap">{task.daysLeft} days left</span>
+                            </div>
+                          )}
+                          <GradientButton className="flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 text-[10px] sm:text-xs md:text-sm white">
+                            {task.dueDate ? (
+                              <>
+                                <Upload className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+                                <span>Upload</span>
+                              </>
+                            ) : task.time ? (
+                              <>
+                                <Bell className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+                                <span>Remind Me</span>
+                              </>
+                            ) : (
+                              <span>Start</span>
+                            )}
+                          </GradientButton>
+                        </>
+                      )}
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
-        </div>
 
-        {/* Coach Feedback Section */}
-        <div className="lg:col-span-1">
-          <div className="bg-gradient-to-b from-blue-100 to-blue-50/20 rounded-2xl shadow-sm p-3 sm:p-4 md:p-5 lg:sticky lg:top-6">
-            <div className="flex items-center justify-between mb-3 sm:mb-4 gap-2">
-              <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900">Coach Feedback</h2>
-              <GradientButton className="whitespace-nowrap px-4 py-2 min-w-fit">
-                View More
-              </GradientButton>
-            </div>
+          {/* Coach Feedback Section */}
+          <div className="lg:col-span-1">
+            <div className="bg-gradient-to-b from-blue-100 to-blue-50/20 rounded-2xl shadow-sm p-2.5 sm:p-3 md:p-4 lg:p-5 lg:sticky lg:top-6">
+              <div className="flex items-center justify-between mb-2.5 sm:mb-3 md:mb-4 gap-2">
+                <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-gray-900">Coach Feedback</h2>
+                <GradientButton className="whitespace-nowrap px-3 sm:px-4 py-1.5 sm:py-2 min-w-fit text-xs sm:text-sm">
+                  View More
+                </GradientButton>
+              </div>
 
-            <div className="space-y-1 sm:space-y-2">
-              {feedbacks.map((feedback) => (
-                <div
-                  key={feedback.id}
-                  className="bg-white/40 rounded-lg sm:rounded-xl p-3 sm:p-3.5 hover:shadow-md transition-shadow"
-                >
-                  <div className="flex items-start gap-2 sm:gap-2.5 mb-2">
-                    <Image
-                      src={feedback.avatar}
-                      alt={feedback.coach}
-                      height={40}
-                      width={40}
-                      className="w-8 h-8 sm:w-10 sm:h-10 rounded-full object-cover ring-2 ring-blue-100 flex-shrink-0"
-                    />
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center justify-between mb-0.5 gap-2">
-                        <h4 className="font-semibold text-sm sm:text-base text-gray-900 truncate">{feedback.coach}</h4>
-                        <StarRating rating={feedback.rating} />
+              <div className="space-y-1.5 sm:space-y-2">
+                {feedbacks.map((feedback) => (
+                  <div
+                    key={feedback.id}
+                    className="bg-white/40 rounded-lg sm:rounded-xl p-2.5 sm:p-3 md:p-3.5 hover:shadow-md transition-shadow"
+                  >
+                    <div className="flex items-start gap-1.5 sm:gap-2 md:gap-2.5 mb-1.5 sm:mb-2">
+                      <Image
+                        src={feedback.avatar}
+                        alt={feedback.coach}
+                        height={40}
+                        width={40}
+                        className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 rounded-full object-cover ring-2 ring-blue-100 flex-shrink-0"
+                      />
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center justify-between mb-0.5 gap-1.5 sm:gap-2">
+                          <h4 className="font-semibold text-xs sm:text-sm md:text-base text-gray-900 truncate">{feedback.coach}</h4>
+                          <StarRating rating={feedback.rating} />
+                        </div>
+                        <p className="text-[9px] sm:text-[10px] md:text-xs text-gray-500">{feedback.timestamp}</p>
                       </div>
-                      <p className="text-[10px] sm:text-xs text-gray-500">{feedback.timestamp}</p>
                     </div>
+                    <p className="text-[10px] sm:text-xs md:text-sm text-gray-700 leading-relaxed">{feedback.message}</p>
                   </div>
-                  <p className="text-xs sm:text-sm text-gray-700 leading-relaxed">{feedback.message}</p>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </Container>
   );
 };
 

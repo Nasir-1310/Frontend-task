@@ -127,7 +127,7 @@ const AnnouncementsLeaderboard = () => {
   return (
     <Container>
       <div className="bg-[#B2CCFF82] min-h-screen p-4 sm:p-6 lg:p-8">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
+        <div className="w-auto ml-4 mr-4 sm:ml-7 sm:mr-auto md:ml-10 lg:ml-18 mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
           {/* ========== ANNOUNCEMENTS ========== */}
           <div className="bg-blue-100 rounded-2xl shadow-sm overflow-hidden">
             <div className="bg-white/50 p-4 sm:p-5 flex flex-col sm:flex-row items-center justify-between gap-3">
@@ -228,8 +228,8 @@ const AnnouncementsLeaderboard = () => {
                       {/* Play Icon – Only for LIVE */}
                       {announcement.type === 'live' && (
                         <div className="absolute inset-0 flex items-center justify-center bg-black/30">
-                          <div className="w-14 h-14 rounded-full bg-white/90 flex items-center justify-center shadow-lg hover:scale-110 transition-transform cursor-pointer">
-                            <Play className="w-7 h-7 text-gray-900 ml-1" fill="currentColor" />
+                          <div className="w-10 h-10 rounded-full bg-black/50 flex items-center justify-center shadow-lg hover:scale-110 transition-transform cursor-pointer">
+                            <Play className="w-7 h-7 rounded-xl text-white/80 ml-1" fill="currentColor" />
                           </div>
                         </div>
                       )}
@@ -246,7 +246,7 @@ const AnnouncementsLeaderboard = () => {
                         </GradientButton>
                         <GradientButton className="flex items-center gap-1.5 text-xs px-4 py-2 bg-blue-100 text-blue-600 hover:bg-blue-200">
                           <MessageSquare className="w-4 h-4" />
-                          RSVP
+                          RSVP to Practice
                         </GradientButton>
                       </div>
                     )}
@@ -255,11 +255,11 @@ const AnnouncementsLeaderboard = () => {
                       <div className="flex items-center gap-4 text-xs text-gray-600 sm:ml-auto">
                         <button className="flex items-center gap-1 hover:text-red-500 transition-colors">
                           <Heart className="w-4 h-4 text-red-500 fill-red-500" />
-                          {announcement.stats.likes}
+                          {announcement.stats.likes} Likes
                         </button>
                         <button className="flex items-center gap-1 hover:text-blue-500 transition-colors">
                           <MessageSquare className="w-4 h-4" />
-                          {announcement.stats.replies}
+                          {announcement.stats.replies} Replies
                         </button>
                       </div>
                     )}
