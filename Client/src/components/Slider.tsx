@@ -1,8 +1,9 @@
 'use client';
 
-import { Users, TrendingUp, BarChart3, Check } from 'lucide-react';
+import { TrendingUp, Check } from 'lucide-react';
 import Image from 'next/image';
 import Container from './Container';
+
 
 export default function Slider() {
   const weekDays = [
@@ -43,8 +44,14 @@ export default function Slider() {
             <div className="flex flex-wrap xl:flex-nowrap gap-2 lg:gap-1 items-end max-w-full">
               {/* Total Athletes Card */}
               <div className="bg-white rounded-2xl shadow-lg p-3 lg:p-4 flex items-center gap-2 lg:gap-3 w-full sm:w-[calc(50%-0.25rem)] lg:w-[164px]  h-[78px]">
-                <div className="w-8 h-8 lg:w-9 lg:h-9 rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0">
-                  <Users className="w-3.5 h-3.5 lg:w-4 lg:h-4 text-gray-700" />
+                <div className="w-8 h-8 lg:w-9 lg:h-9 rounded-full  flex items-center justify-center flex-shrink-0">
+                  <Image
+                    src="/images/user-group.png"
+                    alt="Athletes Icon"
+                    width={24}
+                    height={24}
+                    className="object-contain w-3.5 h-3.5 lg:w-4 lg:h-4 text-white"
+                  />    
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="text-[9px] lg:text-[10px] text-gray-600 font-medium mb-0.5 whitespace-nowrap">Total Athletes</div>
@@ -60,8 +67,14 @@ export default function Slider() {
 
               {/* Projected Ranking Card */}
               <div className="bg-white rounded-2xl shadow-lg p-3 lg:p-4 flex items-center gap-2 lg:gap-3 w-full sm:w-[calc(50%-0.25rem)] lg:w-[197px] h-[78px]">
-                <div className="w-8 h-8 lg:w-9 lg:h-9 rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0">
-                  <BarChart3 className="w-3.5 h-3.5 lg:w-4 lg:h-4 text-gray-700" />
+                <div className="w-8 h-8 lg:w-9 lg:h-9 rounded-full  flex items-center justify-center flex-shrink-0">
+                  <Image
+                    src="/images/medal-02.png"
+                    alt="Ranking Icon"
+                    width={24}
+                    height={24}
+                    className="object-contain w-3.5 h-3.5 lg:w-4 lg:h-4 text-white"
+                  />  
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="text-[9px] lg:text-[10px] text-gray-600 font-medium mb-0.5 whitespace-nowrap">Projected Ranking</div>
