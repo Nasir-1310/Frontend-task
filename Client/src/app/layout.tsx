@@ -1,6 +1,7 @@
 // src/app/layout.tsx
 
 import { Noto_Sans } from "next/font/google";
+import { Metadata } from "next";
 import "./globals.css";
 
 const notoSans = Noto_Sans({
@@ -9,6 +10,14 @@ const notoSans = Noto_Sans({
   weight: ["400", "700"],
 });
 
+export const metadata: Metadata = {
+  title: "Athlete Program Dashboard",
+  description: "Your description here",
+  icons: {
+    icon: "/favicon.ico",
+  },
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -16,11 +25,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <head>
-        <meta name="theme-color" content="#0f172a" />
-        {/* <link rel="icon" href="/favicon.ico" type="image/x-icon" /> */}
-      </head>
-
       <body
         className={`${notoSans.variable} font-sans antialiased bg-white text-gray-900`}
       >
