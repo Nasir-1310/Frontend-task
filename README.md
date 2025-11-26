@@ -58,6 +58,7 @@ Created design:
 
 
 <img width="805" height="583" alt="image" src="https://github.com/user-attachments/assets/22d6d267-5f52-434d-85ec-884946eb6cca" />
-<img width="773" height="592" alt="image" src="https://github.com/user-attachments/assets/eafb3828-abc8-4786-9c65-50b031e4cd68" />
+<img width="801" height="591" alt="image" src="https://github.com/user-attachments/assets/3d9447c7-8c14-427f-917a-921fa6cdb604" />
+
 
 
