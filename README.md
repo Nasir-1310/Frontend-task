@@ -1,3 +1,12 @@
+Given Design:
+<img width="3000" height="4679" alt="Athlete Program Dashboard" src="https://github.com/user-attachments/assets/3e67f177-9d47-4098-b623-5ae9c7c3d852" />
+
+Implemented design: 
+<img width="805" height="583" alt="image" src="https://github.com/user-attachments/assets/22d6d267-5f52-434d-85ec-884946eb6cca" />
+<img width="773" height="592" alt="image" src="https://github.com/user-attachments/assets/eafb3828-abc8-4786-9c65-50b031e4cd68" />
+
+
+
 # Athlete Program Dashboard
 
 This repository contains the frontend task I completed as part of a hiring assignment for a Frontend Developer role.
@@ -49,3 +58,4 @@ The project is a responsive dashboard built with modern frontend tooling. It dem
 ## Author
 
 Nasir — Frontend Developer (task submission)
+
